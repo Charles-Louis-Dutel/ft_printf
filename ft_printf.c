@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 21:03:08 by cdutel            #+#    #+#             */
-/*   Updated: 2023/11/15 06:00:57 by cdutel           ###   ########.fr       */
+/*   Updated: 2023/11/15 07:05:21 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_put_args(char c, va_list args)
 	else if (c == 'X')
 		return ft_convert_hexa_maj(va_arg(args, unsigned));
 	else if (c == 'p')
-		return ft_convert_adress(va_arg(args, size_t));
+		return ft_convert_adress(va_arg(args, unsigned long long));
 	return (0);
 }
 
@@ -58,7 +58,7 @@ int	ft_printf(const char *s, ...)
 	va_end(args);
 	return (len);
 }
-
+/*
 int main()
 {
 	int x;
@@ -66,9 +66,11 @@ int main()
 	int a;
 	int b;
 	int c;
+	int d;
 	a = 458;
 	b = -458;
 	c = 48849489;
+	d = -1000;
 	//x = ft_printf("test : %c , %s , %d , %u , %x , %X , %p , %p , %%\n", 'a', "bjr", 9745, -54, 589, 489995, (char *)311730411672, &a);
 	//y = printf("test : %c , %s , %d , %u , %x , %X , %p , %p , %%\n", 'a', "bjr", 9745, -54, 589, 489995, (char *)311730411672, &a);
 	//ft_convert_adress(311730411672);
@@ -86,9 +88,9 @@ int main()
 	y = printf("test : %p , %p , %p\n", (char *)458, (char *)-2147483647, (char *)48849489);
 
 	printf("%d\n", x);
-	printf("%d\n", y);*/
+	printf("%d\n", y);
 
-	x = ft_printf("test : %p\n", (char *)-1000);
-	y = printf("test : %p\n", (char *)-1000);
+	x = ft_printf("test : %p , %p , %p\n", (char *)-1000, "-1000", &d);
+	y = printf("test : %p , %p , %p\n", (char *)-1000, "-1000", &d);
 	return 0;
-}
+}*/

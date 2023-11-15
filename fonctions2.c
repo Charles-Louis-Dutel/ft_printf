@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 22:25:30 by cdutel            #+#    #+#             */
-/*   Updated: 2023/11/15 03:12:28 by cdutel           ###   ########.fr       */
+/*   Updated: 2023/11/15 07:01:29 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_putnbr_unsigned(unsigned int n)
 	return (i);
 }
 
-int	ft_convert_adress(size_t n)
+int	ft_convert_adress(unsigned long long n)
 {
 	char	*hexabase;
 	int		i;

@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 20:29:15 by cdutel            #+#    #+#             */
-/*   Updated: 2023/11/15 00:55:42 by cdutel           ###   ########.fr       */
+/*   Updated: 2023/11/15 07:00:48 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	ft_putnbr(long n)
 	return (i);
 }
 
-int	ft_convert_hexa(unsigned int n)
+int	ft_convert_hexa(unsigned long long n)
 {
 	char	*hexabase;
 	int		i;
