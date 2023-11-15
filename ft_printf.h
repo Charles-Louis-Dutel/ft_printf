@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 20:26:26 by cdutel            #+#    #+#             */
-/*   Updated: 2023/11/15 07:01:14 by cdutel           ###   ########.fr       */
+/*   Updated: 2023/11/15 09:06:43 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <unistd.h>
 #include <stdarg.h>
+#include <stdio.h>
 
 int	ft_putchar(int c);
 int	ft_putstr(char *s);

@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 22:25:30 by cdutel            #+#    #+#             */
-/*   Updated: 2023/11/15 07:01:29 by cdutel           ###   ########.fr       */
+/*   Updated: 2023/11/15 09:07:55 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ int	ft_convert_adress(unsigned long long n)
 	char	*hexabase;
 	int		i;
 
+	if (!n)
+	{
+		ft_putstr("(nil)");
+		return (5);
+	}
 	i = 0;
 	hexabase = "0123456789abcdef";
 	ft_putchar('0');

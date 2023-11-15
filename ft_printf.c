@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 21:03:08 by cdutel            #+#    #+#             */
-/*   Updated: 2023/11/15 07:05:21 by cdutel           ###   ########.fr       */
+/*   Updated: 2023/11/15 09:28:05 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	ft_printf(const char *s, ...)
 	va_end(args);
 	return (len);
 }
-/*
+
 int main()
 {
 	int x;
@@ -88,9 +88,19 @@ int main()
 	y = printf("test : %p , %p , %p\n", (char *)458, (char *)-2147483647, (char *)48849489);
 
 	printf("%d\n", x);
-	printf("%d\n", y);
+	printf("%d\n", y);*/
 
-	x = ft_printf("test : %p , %p , %p\n", (char *)-1000, "-1000", &d);
-	y = printf("test : %p , %p , %p\n", (char *)-1000, "-1000", &d);
+	//x = ft_printf("test : %p , %p , %p\n", (char *)-1000, "-1000", &d);
+	//y = printf("test : %p , %p , %p\n", (char *)-1000, "-1000", &d);
+
+	//x = ft_printf("test : %p\n", (void *)0);
+	//y = printf("test : %p\n", (void *)0);
+
+	x = ft_printf("test : %s\n", (char *)0);
+	y = printf("test : %s\n", (char *)0);
+
+	//x = 0;
+	printf("%d\n", x);
+	printf("%d\n", y);
 	return 0;
-}*/
+}
