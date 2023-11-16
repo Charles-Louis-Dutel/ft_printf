@@ -24,8 +24,7 @@ int	ft_putnbr_unsigned(unsigned int n)
 	if (n > 9)
 	{
 		i += ft_putnbr_unsigned(n / 10);
-		ft_putnbr_unsigned(n % 10);
-		i++;
+		i += ft_putnbr_unsigned(n % 10);
 	}
 	return (i);
 }
@@ -52,8 +51,7 @@ int	ft_convert_adress(unsigned long long n)
 	if (n >= 16)
 	{
 		i += ft_convert_hexa(n / 16);
-		ft_convert_hexa(n % 16);
-		i++;
+		i += ft_convert_hexa(n % 16);
 	}
 	return (i);
 }

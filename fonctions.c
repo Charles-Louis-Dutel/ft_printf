@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 int	ft_putchar(int c)
 {
@@ -21,7 +20,7 @@ int	ft_putchar(int c)
 
 int	ft_putstr(char *s)
 {
-	int i;
+	int	i;
 
 	if (!s)
 	{
@@ -31,8 +30,7 @@ int	ft_putstr(char *s)
 	i = 0;
 	while (s[i])
 	{
-		ft_putchar(s[i]);
-		i++;
+		i += ft_putchar(s[i]);
 	}
 	return (i);
 }
@@ -44,9 +42,8 @@ int	ft_putnbr(long n)
 	i = 0;
 	if (n < 0)
 	{
-		ft_putchar('-');
+		i += ft_putchar('-');
 		n = -n;
-		i++;
 	}
 	if (n <= 9)
 	{
@@ -55,8 +52,7 @@ int	ft_putnbr(long n)
 	if (n > 9)
 	{
 		i += ft_putnbr(n / 10);
-		ft_putnbr(n % 10);
-		i++;
+		i += ft_putnbr(n % 10);
 	}
 	return (i);
 }
@@ -75,8 +71,7 @@ int	ft_convert_hexa(unsigned long long n)
 	if (n >= 16)
 	{
 		i += ft_convert_hexa(n / 16);
-		ft_convert_hexa(n % 16);
-		i++;
+		i += ft_convert_hexa(n % 16);
 	}
 	return (i);
 }
@@ -95,14 +90,7 @@ int	ft_convert_hexa_maj(unsigned int n)
 	if (n >= 16)
 	{
 		i += ft_convert_hexa_maj(n / 16);
-		ft_convert_hexa_maj(n % 16);
-		i++;
+		i += ft_convert_hexa_maj(n % 16);
 	}
 	return (i);
 }
-
-/*int main()
-{
-	//ft_convert_hexa('b');
-	printf("\n%x\n", 4202539);
-}*/
