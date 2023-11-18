@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdutel <cdutel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 21:03:08 by cdutel            #+#    #+#             */
-/*   Updated: 2023/11/15 09:53:47 by cdutel           ###   ########.fr       */
+/*   Updated: 2023/11/18 13:43:16 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,44 @@ static int	ft_put_args(char c, va_list args)
 		return (ft_convert_hexa_maj(va_arg(args, unsigned)));
 	else if (c == 'p')
 		return (ft_convert_adress(va_arg(args, unsigned long long)));
+	else if (c == '%')
+		return (ft_putchar('%'));
 	return (0);
+}
+
+int	ft_check_width(char *s)
+{
+	int	i;
+
+	i = 0;
+	while ((s[i] == '#') || (s[i] == ' ') || s[i] == '+')
+		i++;
+	while (s[i] >= '0' && s[i] <= '9')
+		i++;
+	return (i);
+}
+
+static int	ft_check_flags(char *s, va_list args)
+{
+	int	i;
+
+	i = 0;
+	if (s[i] == '#')
+		return (ft_fonctions_diese(&s[i], args));
+	else if (s[i] == ' ')
+		return (ft_fonctions_space(&s[i], args));
+	else if (s[i] == '+')
+		return (ft_fonctions_plus(&s[i], args));
+	else if (s[i] != '#' || s[i] != ' ' || s[i] != '+')
+		return (ft_put_args(s[i], args));
+	return (0);
+}
+
+static int	ft_length_flag(char *s, char c)
+{
+	if (c == '#' || c == ' ' || c == '+')
+		return (ft_check_width(s) + 2);
+	return (2);
 }
 
 int	ft_printf(const char *s, ...)
@@ -36,23 +73,22 @@ int	ft_printf(const char *s, ...)
 	va_list	args;
 	int		i;
 	int		len;
+	char	*str;
 
 	va_start(args, s);
 	i = 0;
 	len = 0;
-	while (s[i])
+	str = (char *)s;
+	while (str[i])
 	{
-		if (s[i] == '%')
+		if (str[i] == '%')
 		{
-			if (s[i + 1] == '%')
-				len += ft_putchar('%');
-			else
-				len += ft_put_args(s[i + 1], args);
-			i += 2;
+			len += ft_check_flags(&str[i + 1], args);
+			i += ft_length_flag(&str[i + 1], str[i + 1]);
 		}
-		if (s[i] && s[i] != '%')
+		if (str[i] && str[i] != '%')
 		{
-			len += ft_putchar(s[i]);
+			len += ft_putchar(str[i]);
 			i++;
 		}
 	}
@@ -62,16 +98,23 @@ int	ft_printf(const char *s, ...)
 /*
 int main()
 {
-	int x;
+	//int x;
 	int y;
 
-	x = ft_printf("test : %c", '0');
-	y = printf("test : %c", '0');
+	//x = ft_printf("| %10d |", 17);
+	//printf("\n");
+	y = printf("| %10.3d |", 17);
+	printf("\n");
+	y = printf("| %10d |", 17);
+	printf("\n");
+	y = printf("| %0-10d |", 17);
+		printf("\n");
+	y = printf("| %0010d |", 17);
 
-	printf("\n%d\n", x);
+	//printf("\n%d\n", x);
 	printf("\n%d\n", y);
 	return 0;
-}
+}*/
 
 /*int main()
 {

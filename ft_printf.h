@@ -15,14 +15,24 @@
 
 # include <unistd.h>
 # include <stdarg.h>
+# include <stdio.h>
 
 int	ft_printf(const char *s, ...);
 int	ft_putchar(int c);
 int	ft_putstr(char *s);
 int	ft_putnbr(long n);
+int	ft_putnbr_plus(long n);
 int	ft_putnbr_unsigned(unsigned int n);
 int	ft_convert_hexa(unsigned long long n);
-int	ft_convert_hexa_maj(unsigned int n);
+int	ft_convert_hexa_maj(unsigned long long n);
 int	ft_convert_adress(unsigned long long n);
+int	ft_convert_0xhexa(unsigned long long n);
+int	ft_convert_0xmajhexa(unsigned long long n);
+int	ft_fonctions_space(char *s, va_list args);
+int	ft_fonctions_plus(char *s, va_list args);
+int	ft_fonctions_diese(char *s, va_list args);
+int	ft_check_width(char *s);
+int	ft_calcul_space(char *s);
+int	ft_strlen(char *str);
 
 #endif
