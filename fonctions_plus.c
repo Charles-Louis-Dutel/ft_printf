@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 15:03:33 by cdutel            #+#    #+#             */
-/*   Updated: 2023/11/18 10:44:41 by cdutel           ###   ########.fr       */
+/*   Updated: 2023/11/18 19:09:15 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	ft_put_space(int i)
 	return (result);
 }
 
-static int	ft_length(int i)
+/*static int	ft_length(long i)
 {
 	int	result;
 
@@ -39,7 +39,7 @@ static int	ft_length(int i)
 		i /= 10;
 	}
 	return (result);
-}
+}*/
 
 int	ft_fonctions_plus(char *s, va_list args)
 {
@@ -48,7 +48,8 @@ int	ft_fonctions_plus(char *s, va_list args)
 
 	i = 0;
 	n = 0;
-	while ((s[i] == '#') || (s[i] == ' ') || s[i] == '+')
+	while (s[i] == '#' || s[i] == ' ' || s[i] == '+' || s[i] == '0'
+		|| s[i] == '-' || s[i] == '.')
 		i++;
 	if (s[i] >= '0' && s[i] <= '9')
 		n = ft_calcul_space(&s[i]);

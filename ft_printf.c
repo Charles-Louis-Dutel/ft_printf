@@ -6,13 +6,13 @@
 /*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 21:03:08 by cdutel            #+#    #+#             */
-/*   Updated: 2023/11/18 13:43:16 by cdutel           ###   ########.fr       */
+/*   Updated: 2023/11/19 15:27:59 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_put_args(char c, va_list args)
+int	ft_put_args(char c, va_list args)
 {
 	if (c == 'c')
 		return (ft_putchar(va_arg(args, int)));
@@ -38,32 +38,16 @@ int	ft_check_width(char *s)
 	int	i;
 
 	i = 0;
-	while ((s[i] == '#') || (s[i] == ' ') || s[i] == '+')
-		i++;
-	while (s[i] >= '0' && s[i] <= '9')
+	while (s[i] == '#' || s[i] == ' ' || s[i] == '+' || s[i] == '-' || s[i] == '.'
+		|| (s[i] >= '0' && s[i] <= '9'))
 		i++;
 	return (i);
 }
 
-static int	ft_check_flags(char *s, va_list args)
-{
-	int	i;
-
-	i = 0;
-	if (s[i] == '#')
-		return (ft_fonctions_diese(&s[i], args));
-	else if (s[i] == ' ')
-		return (ft_fonctions_space(&s[i], args));
-	else if (s[i] == '+')
-		return (ft_fonctions_plus(&s[i], args));
-	else if (s[i] != '#' || s[i] != ' ' || s[i] != '+')
-		return (ft_put_args(s[i], args));
-	return (0);
-}
-
 static int	ft_length_flag(char *s, char c)
 {
-	if (c == '#' || c == ' ' || c == '+')
+	if (c == '#' || c == ' ' || c == '+' || c == '-' || c == '.'
+		|| (c >= '0' && c <= '9'))
 		return (ft_check_width(s) + 2);
 	return (2);
 }
@@ -98,21 +82,23 @@ int	ft_printf(const char *s, ...)
 /*
 int main()
 {
-	//int x;
+	int x;
 	int y;
 
-	//x = ft_printf("| %10d |", 17);
+	x = ft_printf("|%.10s|", (char *)0);
+	printf("\n");
+	y = printf("|%.10s|", (char *)0);
 	//printf("\n");
-	y = printf("| %10.3d |", 17);
-	printf("\n");
-	y = printf("| %10d |", 17);
-	printf("\n");
-	y = printf("| %0-10d |", 17);
-		printf("\n");
-	y = printf("| %0010d |", 17);
+	//y = printf("|% 1d|", 10);
+	//printf("\n");
+	//y = printf("|%30p|", "-1");
+	//printf("\n");
+	//y = printf("|% 15x|", -1);
+	//	printf("\n");
+	//y = printf("| %00010d |", 17);
 
-	//printf("\n%d\n", x);
-	printf("\n%d\n", y);
+	printf("\n%d\n", x);
+	printf("%d\n", y);
 	return 0;
 }*/
 

@@ -1,11 +1,13 @@
 NAME = libftprintf.a
 
 SRCS = \
-		ft_printf.c fonctions1.c fonctions2.c \
+		ft_printf.c fonctions1.c fonctions2.c check_flags.c\
 
 BSRCS = \
 		fonctions_bonus.c fonctions_diese.c fonctions_plus.c \
-		fonctions_space.c \
+		fonctions_space.c fonctions_moins.c fonctions_moins2.c \
+		fonctions_point.c fonctions_point2.c fonctions_space2.c \
+		fonctions_0.c \
 
 SRC_ALL = ${SRCS} ${BSRCS}
 OBJS = ${SRCS:.c=.o}

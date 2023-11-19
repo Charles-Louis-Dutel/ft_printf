@@ -23,16 +23,36 @@ int	ft_putstr(char *s);
 int	ft_putnbr(long n);
 int	ft_putnbr_plus(long n);
 int	ft_putnbr_unsigned(unsigned int n);
+int	ft_strlen(char *str);
+int	ft_length(long i);
+
 int	ft_convert_hexa(unsigned long long n);
 int	ft_convert_hexa_maj(unsigned long long n);
 int	ft_convert_adress(unsigned long long n);
 int	ft_convert_0xhexa(unsigned long long n);
 int	ft_convert_0xmajhexa(unsigned long long n);
+int	ft_calcul_length_hexa(unsigned long long n);
+int	ft_point_hexa(va_list args, int n);
+int	ft_point_hexamaj(va_list args, int n);
+int	ft_moins_hexa(va_list args, int n);
+int	ft_moins_hexamaj(va_list args, int n);
+int	ft_moins_adress(va_list args, int n);
+int	ft_moins_c(va_list args, int n);
+
 int	ft_fonctions_space(char *s, va_list args);
+int	ft_fonctions_space_2(char *s, va_list args);
 int	ft_fonctions_plus(char *s, va_list args);
 int	ft_fonctions_diese(char *s, va_list args);
+int ft_fonctions_point(char *s, va_list args);
+int	ft_fonctions_moins(char *s, va_list args);
+int	ft_fonction_d_i_0(char *s, va_list args);
+
+int	ft_put_0(int nbr_0, int i);
+int	ft_add_space(int len);
+
 int	ft_check_width(char *s);
 int	ft_calcul_space(char *s);
-int	ft_strlen(char *str);
+int	ft_check_flags(char *s, va_list args);
+int	ft_put_args(char c, va_list args);
 
 #endif
