@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fonctions3.c                                       :+:      :+:    :+:   */
+/*   fonctions2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 22:25:30 by cdutel            #+#    #+#             */
-/*   Updated: 2023/11/16 16:51:54 by cdutel           ###   ########.fr       */
+/*   Updated: 2023/11/23 19:27:23 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,15 @@ int	ft_convert_adress(unsigned long long n)
 		i += ft_convert_hexa(n / 16);
 		i += ft_convert_hexa(n % 16);
 	}
+	return (i);
+}
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
 	return (i);
 }

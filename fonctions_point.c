@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 14:46:12 by cdutel            #+#    #+#             */
-/*   Updated: 2023/11/19 15:30:24 by cdutel           ###   ########.fr       */
+/*   Updated: 2023/11/24 10:14:41 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,5 +116,9 @@ int	ft_fonctions_point(char *s, va_list args)
 		return (ft_point_hexa(args, n));
 	else if (s[0 + ft_check_width(s)] == 'X')
 		return (ft_point_hexamaj(args, n));
+	else if (s[0 + ft_check_width(s)] == 'p')
+		return (ft_point_adress(args, n));
+	else if (s[0 + ft_check_width(s)] == 'c')
+		return (ft_putchar(va_arg(args, int)));
 	return (0);
 }

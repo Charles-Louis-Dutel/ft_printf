@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 21:03:08 by cdutel            #+#    #+#             */
-/*   Updated: 2023/11/19 15:27:59 by cdutel           ###   ########.fr       */
+/*   Updated: 2023/11/24 19:53:41 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ int	ft_check_width(char *s)
 	int	i;
 
 	i = 0;
-	while (s[i] == '#' || s[i] == ' ' || s[i] == '+' || s[i] == '-' || s[i] == '.'
-		|| (s[i] >= '0' && s[i] <= '9'))
+	while (s[i] == '#' || s[i] == ' ' || s[i] == '+' || s[i] == '-'
+		|| s[i] == '.' || (s[i] >= '0' && s[i] <= '9'))
 		i++;
 	return (i);
 }
@@ -79,28 +79,21 @@ int	ft_printf(const char *s, ...)
 	va_end(args);
 	return (len);
 }
-/*
+
 int main()
 {
 	int x;
 	int y;
 
-	x = ft_printf("|%.10s|", (char *)0);
+	x = ft_printf("|%42%|");
 	printf("\n");
-	y = printf("|%.10s|", (char *)0);
-	//printf("\n");
-	//y = printf("|% 1d|", 10);
-	//printf("\n");
-	//y = printf("|%30p|", "-1");
-	//printf("\n");
-	//y = printf("|% 15x|", -1);
-	//	printf("\n");
-	//y = printf("| %00010d |", 17);
+	y = printf("|%42%|");
+	printf("\n");
 
-	printf("\n%d\n", x);
+	printf("%d\n", x);
 	printf("%d\n", y);
 	return 0;
-}*/
+}
 
 /*int main()
 {

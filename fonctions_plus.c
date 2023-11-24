@@ -6,40 +6,48 @@
 /*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 15:03:33 by cdutel            #+#    #+#             */
-/*   Updated: 2023/11/18 19:09:15 by cdutel           ###   ########.fr       */
+/*   Updated: 2023/11/24 11:28:51 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_put_space(int i)
+int	ft_add_space(int len)
 {
-	int	result;
+	int	i;
 
-	i -= 1;
-	if (i <= 0)
-		return (0);
-	result = 0;
-	while (i != 0)
+	i = 0;
+	while (len > 0)
 	{
-		result += ft_putchar(' ');
-		i--;
+		i += ft_putchar(' ');
+		len--;
 	}
-	return (result);
+	return (i);
 }
 
-/*static int	ft_length(long i)
+int	ft_putnbr_plus(long n)
 {
-	int	result;
+	int	i;
 
-	result = 0;
-	while (i > 0)
+	i = 0;
+	if (n < 0)
 	{
-		result++;
-		i /= 10;
+		i += ft_putchar('-');
+		n = -n;
 	}
-	return (result);
-}*/
+	else if (n >= 0)
+		i += ft_putchar('+');
+	if (n <= 9)
+	{
+		i += ft_putchar(n + '0');
+	}
+	if (n > 9)
+	{
+		i += ft_putnbr(n / 10);
+		i += ft_putnbr(n % 10);
+	}
+	return (i);
+}
 
 int	ft_fonctions_plus(char *s, va_list args)
 {
@@ -56,7 +64,10 @@ int	ft_fonctions_plus(char *s, va_list args)
 	if (s[0 + ft_check_width(s)] == 'd' || s[0 + ft_check_width(s)] == 'i')
 	{
 		i = va_arg(args, int);
-		n = ft_put_space(n - ft_length(i));
+		if (i == 0)
+			n = ft_add_space(n - 2);
+		else
+			n = ft_add_space(n - (ft_length(i) + 1));
 		return (ft_putnbr_plus(i) + n);
 	}
 	return (0);

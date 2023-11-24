@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 11:00:36 by cdutel            #+#    #+#             */
-/*   Updated: 2023/11/19 15:21:47 by cdutel           ###   ########.fr       */
+/*   Updated: 2023/11/24 09:37:22 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static int	ft_space_number_d_i(va_list args, int n)
 	return (ft_putnbr(i) + len);
 }
 
-int	ft_fonctions_space_2(char *s, va_list args)
+int	ft_fonctions_number_space(char *s, va_list args)
 {
 	int		i;
 	int		n;

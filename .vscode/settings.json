@@ -5,6 +5,7 @@
 		"cstdarg": "c",
 		"ft_printf.h": "c",
 		"unistd.h": "c",
-		"stdarg.h": "c"
+		"stdarg.h": "c",
+		"random": "c"
 	}
 }

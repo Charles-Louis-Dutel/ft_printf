@@ -6,94 +6,123 @@
 /*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 17:34:23 by cdutel            #+#    #+#             */
-/*   Updated: 2023/11/19 09:09:43 by cdutel           ###   ########.fr       */
+/*   Updated: 2023/11/24 18:52:53 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_add_space(int len)
+static int	ft_moins_d_i_neg(long i, int n1, int n2)
 {
-	int	i;
+	int	len;
 
-	i = 0;
-	while (len != 0)
+	i *= -1;
+	len = 0;
+	len += ft_putchar('-');
+	if (n2 > ft_length(i))
+		len += ft_put_0(n2 - ft_length(i), i);
+	if (n1 > ft_length(i) + 1 && n1 > n2)
 	{
-		i += ft_putchar(' ');
-		len--;
+		if (n2 > ft_length(i))
+			n1 -= (ft_length(i) + 1 + (n2 - ft_length(i)));
+		else
+			n1 -= (ft_length(i) + 1);
+		return (ft_putnbr(i) + ft_add_space(n1) + len);
 	}
-	return (i);
+	return (ft_putnbr(i) + len);
 }
 
-int	ft_moins_d_i(va_list args, int n)
+static int	ft_moins_d_i(va_list args, int n1, int n2, char *c)
 {
 	long	i;
 	int		len;
 
 	i = va_arg(args, int);
-	if (n - ft_length(i) <= 0)
-		return (ft_putnbr(i));
+	len = 0;
+	if (i == 0 && c[0] != '.')
+		return (ft_putnbr(0) + ft_add_space(n1 - 1));
+	else if (i == 0)
+		return (ft_put_0(n2, i) + ft_add_space(n1 - n2));
 	if (i < 0)
-		len = n - (ft_length(i) + 1);
-	else if (i == 0)
-		len = n - 1;
-	else
-		len = n - ft_length(i);
-	return (ft_putnbr(i) + ft_add_space(len));
-}
-
-int	ft_moins_u(va_list args, int n)
-{
-	unsigned long long	i;
-	int					len;
-
-	i = va_arg(args, unsigned);
-	if (n - ft_length(i) <= 0)
-		return (ft_putnbr_unsigned(i));
-	else if (i == 0)
-		len = n - 1;
-	else
-		len = n - ft_length(i);
-	return (ft_putnbr_unsigned(i) + ft_add_space(len));
-}
-
-int	ft_moins_s(va_list args, int n)
-{
-	char	*str;
-	int		i;
-
-	str = va_arg(args, char *);
-	i = ft_strlen(str);
-	if (n > i)
+		return (ft_moins_d_i_neg(i, n1, n2));
+	if (n2 > ft_length(i))
+		len += ft_put_0(n2 - ft_length(i), i);
+	if (n1 > ft_length(i) && n1 > n2)
 	{
-		n -= i;
-		return (ft_putstr(str) + ft_add_space(n));
+		if (n2 > ft_length(i))
+			n1 -= (ft_length(i) + (n2 - ft_length(i)));
+		else
+			n1 -= (ft_length(i));
+		return (ft_putnbr(i) + ft_add_space(n1) + len);
 	}
-	return (ft_putstr(str));
+	return (ft_putnbr(i) + len);
+}
+
+static int	ft_moins_2(char *s, va_list args, int n1, int n2)
+{
+	if (s[0] == 'c')
+		return (ft_putchar(va_arg(args, int)) + ft_add_space(n1 - 1));
+	else if (s[0] == 's')
+		return (ft_moins_s(args, n1, n2, "0"));
+	else if (s[0] == 'd' || s[0] == 'i')
+		return (ft_moins_d_i(args, n1, n2, "0"));
+	else if (s[0] == 'u')
+		return (ft_moins_u(args, n1, n2, "0"));
+	else if (s[0] == 'x')
+		return (ft_moins_hexa(args, n1, n2, "0"));
+	else if (s[0] == 'X')
+		return (ft_moins_hexamaj(args, n1, n2, "0"));
+	else if (s[0] == 'p')
+		return (ft_moins_adress(args, n1, n2));
+	return (0);
+}
+static int	ft_moins_3(char *s, va_list args, int n1)
+{
+	int	i;
+	int	n2;
+
+	i = 1;
+	n2 = 0;
+	if (s[i] >= '0' && s[i] <= '9')
+		n2 = ft_calcul_space(&s[i]);
+	while (s[i] >= '0' && s[i] <= '9')
+		i++;
+	if (s[i] == 'c')
+		return (ft_putchar(va_arg(args, int)) + ft_add_space(n1 - 1));
+	else if (s[i] == 's')
+		return (ft_moins_s(args, n1, n2, &s[0]));
+	else if (s[i] == 'd' || s[i] == 'i')
+		return (ft_moins_d_i(args, n1, n2, &s[0]));
+	else if (s[i] == 'u')
+		return (ft_moins_u(args, n1, n2, &s[0]));
+	else if (s[i] == 'x')
+		return (ft_moins_hexa(args, n1, n2, &s[0]));
+	else if (s[i] == 'X')
+		return (ft_moins_hexamaj(args, n1, n2, &s[0]));
+	else if (s[i] == 'p')
+		return (ft_moins_adress(args, n1, n2));
+	return (0);
 }
 
 int	ft_fonctions_moins(char *s, va_list args)
 {
 	int		i;
-	int		n;
+	int		n1;
+	int		n2;
 
 	i = 0;
-	n = 0;
-	if (s[i+1] >= '0' && s[i+1] <= '9')
-		n = ft_calcul_space(&s[i+1]);
-	if (s[0 + ft_check_width(s)] == 'd' || s[0 + ft_check_width(s)] == 'i')
-		return (ft_moins_d_i(args, n));
-	if (s[0 + ft_check_width(s)] == 'u')
-		return (ft_moins_u(args, n));
-	if (s[0 + ft_check_width(s)] == 's')
-		return (ft_moins_s(args, n));
-	if (s[0 + ft_check_width(s)] == 'x')
-		return (ft_moins_hexa(args, n));
-	if (s[0 + ft_check_width(s)] == 'X')
-		return (ft_moins_hexamaj(args, n));
-	if (s[0 + ft_check_width(s)] == 'p')
-		return (ft_moins_adress(args, n));
-	if (s[0 + ft_check_width(s)] == 'c')
-		return (ft_moins_c(args, n));
+	n1 = 0;
+	n2 = 0;
+	while (s[i] == '-')
+		i++;
+	if (s[i] >= '1' && s[i] <= '9')
+		n1 = ft_calcul_space(&s[i]);
+	while (s[i] >= '0' && s[i] <= '9')
+		i++;
+	if (s[i] == '.')
+		return (ft_moins_3(&s[i], args, n1));
+	else if (s[i] == 'c' || s[i] == 'u' || s[i] == 'p' || s[i] == 'x'
+		|| s[i] == 'X' || s[i] == 'd' || s[i] == 'i' || s[i] == 's')
+		return (ft_moins_2(&s[i], args, n1, n2));
 	return (0);
 }
