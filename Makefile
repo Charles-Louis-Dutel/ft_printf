@@ -15,13 +15,14 @@ OBJS_ALL = ${SRC_ALL:.c=.o}
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-all: ${NAME} bonus
 
 %.o : %.c
 	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 ${NAME}: ${OBJS}
 	ar rcs ${NAME} ${OBJS} $?
+
+all: ${NAME} bonus
 
 bonus : ${OBJS_ALL}
 	ar rcs ${NAME} ${OBJS_ALL} $?

@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:42:05 by cdutel            #+#    #+#             */
-/*   Updated: 2023/11/24 19:43:28 by cdutel           ###   ########.fr       */
+/*   Updated: 2023/11/25 09:59:23 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	ft_0_point_s(va_list args, int n1, int n2)
 	return (len);
 }
 
-static int	ft_0_point_d_i_neg(long	i, int n1, int n2)
+static int	ft_0_point_d_i_neg(long i, int n1, int n2)
 {
 	int	len;
 
@@ -89,7 +89,7 @@ static int	ft_0_point_d_i(va_list args, int n1, int n2)
 	return (ft_putnbr(i) + len);
 }
 
-int	ft_fonctions_0_point2(char *s, va_list args, int n1, int n2)
+static int	ft_fonctions_0_point2(char *s, va_list args, int n1, int n2)
 {
 	if (s[0] == 'c')
 		return (ft_add_space(n1 - 1) + ft_putchar(va_arg(args, int)));
@@ -126,7 +126,7 @@ int	ft_fonctions_0_point(char *s, va_list args)
 	while (s[i] >= '0' && s[i] <= '9')
 		i++;
 	if (s[i] == 'c' || s[i] == 'u' || s[i] == 'p' || s[i] == 'x'
-		|| s[i] == 'X'  || s[i] == 'd' || s[i] == 'i' || s[i] == 's')
-			return (ft_fonctions_0_point2(&s[i], args, n1, n2));
+		|| s[i] == 'X' || s[i] == 'd' || s[i] == 'i' || s[i] == 's')
+		return (ft_fonctions_0_point2(&s[i], args, n1, n2));
 	return (0);
 }

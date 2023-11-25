@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 17:34:23 by cdutel            #+#    #+#             */
-/*   Updated: 2023/11/24 18:52:53 by cdutel           ###   ########.fr       */
+/*   Updated: 2023/11/25 10:00:46 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ static int	ft_moins_2(char *s, va_list args, int n1, int n2)
 		return (ft_moins_adress(args, n1, n2));
 	return (0);
 }
+
 static int	ft_moins_3(char *s, va_list args, int n1)
 {
 	int	i;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fonctions_space2.c                                 :+:      :+:    :+:   */
+/*   fonctions_number_space.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 11:00:36 by cdutel            #+#    #+#             */
-/*   Updated: 2023/11/24 09:37:22 by cdutel           ###   ########.fr       */
+/*   Updated: 2023/11/25 10:01:22 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	ft_space_u(va_list args, int n)
 {
 	unsigned long long	i;
-	int	len;
+	int					len;
 
 	i = va_arg(args, unsigned);
 	len = 0;
@@ -52,7 +52,7 @@ static int	ft_space_adress(va_list args, int n)
 	if (!i)
 	{
 		if (n > 5)
-		len = ft_add_space(n - 5);
+			len = ft_add_space(n - 5);
 		return (ft_putstr("(nil)") + len);
 	}
 	if (n > ft_length(i))

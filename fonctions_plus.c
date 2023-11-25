@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 15:03:33 by cdutel            #+#    #+#             */
-/*   Updated: 2023/11/24 11:28:51 by cdutel           ###   ########.fr       */
+/*   Updated: 2023/11/25 10:02:27 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_add_space(int len)
 	return (i);
 }
 
-int	ft_putnbr_plus(long n)
+static int	ft_putnbr_plus(long n)
 {
 	int	i;
 

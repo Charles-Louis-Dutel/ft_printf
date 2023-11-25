@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 12:02:54 by cdutel            #+#    #+#             */
-/*   Updated: 2023/11/24 12:32:34 by cdutel           ###   ########.fr       */
+/*   Updated: 2023/11/25 09:56:37 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,12 @@ int	ft_0_point_adress(va_list args, int n1, int n2)
 		}
 		else
 		{
-			len += ft_add_space(n1 - n2 - 2) + ft_putstr("0x");;
+			len += ft_add_space(n1 - n2 - 2) + ft_putstr("0x");
 			len += ft_put_0(n2 - ft_calcul_length_hexa(i), i);
 		}
-		return(ft_convert_hexa(i) + len);
+		return (ft_convert_hexa(i) + len);
 	}
 	len += ft_putstr("0x");
 	len += ft_put_0(n2 - ft_calcul_length_hexa(i), i);
-	return(ft_convert_hexa(i) + len);
+	return (ft_convert_hexa(i) + len);
 }
