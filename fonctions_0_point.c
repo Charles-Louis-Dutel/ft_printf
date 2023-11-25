@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:42:05 by cdutel            #+#    #+#             */
-/*   Updated: 2023/11/25 09:59:23 by cdutel           ###   ########.fr       */
+/*   Updated: 2023/11/25 10:54:03 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ static int	ft_0_point_s(va_list args, int n1, int n2)
 
 	s = va_arg(args, char *);
 	if (!s)
-		return (ft_add_space(n1));
+	{
+		if (n2 < 6)
+			return (ft_add_space(n1));
+		return (ft_add_space(n1 - 6) + ft_putstr("(null)"));
+	}
 	len = 0;
 	j = 0;
 	if (n2 >= ft_strlen(s))

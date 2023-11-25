@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 18:30:39 by cdutel            #+#    #+#             */
-/*   Updated: 2023/11/24 18:56:08 by cdutel           ###   ########.fr       */
+/*   Updated: 2023/11/25 10:40:43 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,11 @@ int	ft_moins_s(va_list args, int n1, int n2, char *c)
 
 	str = va_arg(args, char *);
 	if (!str)
+	{
+		if (c[0] == '.' && n2 < 6)
+			return (ft_add_space(n1));
 		return (ft_putstr("(null)") + ft_add_space(n1 - 6));
+	}
 	j = 0;
 	len = 0;
 	if (c[0] == '.')

@@ -6,7 +6,7 @@
 /*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 17:34:23 by cdutel            #+#    #+#             */
-/*   Updated: 2023/11/25 10:00:46 by cdutel           ###   ########.fr       */
+/*   Updated: 2023/11/25 10:25:10 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,5 +125,7 @@ int	ft_fonctions_moins(char *s, va_list args)
 	else if (s[i] == 'c' || s[i] == 'u' || s[i] == 'p' || s[i] == 'x'
 		|| s[i] == 'X' || s[i] == 'd' || s[i] == 'i' || s[i] == 's')
 		return (ft_moins_2(&s[i], args, n1, n2));
+	else if (s[i] == '%')
+		return (ft_putchar('%'));
 	return (0);
 }

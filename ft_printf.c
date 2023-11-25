@@ -6,11 +6,12 @@
 /*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 21:03:08 by cdutel            #+#    #+#             */
-/*   Updated: 2023/11/25 09:46:19 by cdutel           ###   ########.fr       */
+/*   Updated: 2023/11/25 10:55:13 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 int	ft_put_args(char c, va_list args)
 {
@@ -85,9 +86,9 @@ int main()
 	int x;
 	int y;
 
-	x = ft_printf("|%42%|");
+	x = ft_printf("|%.5s|", NULL);
 	printf("\n");
-	y = printf("|%42%|");
+	y = printf("|%.5s|", NULL);
 	printf("\n");
 
 	printf("%d\n", x);
