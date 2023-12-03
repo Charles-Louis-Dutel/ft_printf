@@ -6,12 +6,13 @@
 /*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 14:26:24 by cdutel            #+#    #+#             */
-/*   Updated: 2023/11/24 19:54:16 by cdutel           ###   ########.fr       */
+/*   Updated: 2023/11/30 12:19:42 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+/*Fonction ft_check_flags_number : permet de gérer le cas"%nbr".*/
 static int	ft_check_flags_number(char *s, va_list args)
 {
 	int	i;
@@ -31,6 +32,7 @@ static int	ft_check_flags_number(char *s, va_list args)
 	return (0);
 }
 
+/*Fonctions ft_check_flags_0_nbr : permet de gérer le cas "%0nbr"*/
 static int	ft_check_flags_0_nbr(char *s, va_list args)
 {
 	int	i;
@@ -47,6 +49,8 @@ static int	ft_check_flags_0_nbr(char *s, va_list args)
 	return (0);
 }
 
+/*Fonction ft_check_flags_0 : dans le cas ou le 1er flag après
+le '%' serait '0', permet de déterminer quel est le prochain flags.*/
 static int	ft_check_flags_0(char *s, va_list args)
 {
 	int	i;
@@ -72,6 +76,8 @@ static int	ft_check_flags_0(char *s, va_list args)
 	return (0);
 }
 
+/*Fonction ft_check_flags : permet de trouver quel est le 1er
+flag juste après le '%'.*/
 int	ft_check_flags(char *s, va_list args)
 {
 	if (s[0] >= '1' && s[0] <= '9')

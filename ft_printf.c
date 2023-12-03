@@ -6,12 +6,15 @@
 /*   By: cdutel <cdutel@42student.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 21:03:08 by cdutel            #+#    #+#             */
-/*   Updated: 2023/11/25 11:03:22 by cdutel           ###   ########.fr       */
+/*   Updated: 2023/11/30 12:22:53 by cdutel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
+/*Fonction ft_put args : permet d'appeler les fonctions
+correspondant aux flags "csdiuxXp%".*/
 int	ft_put_args(char c, va_list args)
 {
 	if (c == 'c')
@@ -33,6 +36,8 @@ int	ft_put_args(char c, va_list args)
 	return (0);
 }
 
+/*Fonction ft_check_width : permet de return le nombre de flag
+après le '%' jusqu'au dernier flag "csdiuxXp%".*/
 int	ft_check_width(char *s)
 {
 	int	i;
@@ -44,6 +49,8 @@ int	ft_check_width(char *s)
 	return (i);
 }
 
+/*Fonction ft_length_flag : permet de return le nombre de caractère
+après le '%' jusqu'au dernier flag "csdiuxXp%" + 2.*/
 static int	ft_length_flag(char *s, char c)
 {
 	if (c == '#' || c == ' ' || c == '+' || c == '-' || c == '.'
@@ -85,9 +92,9 @@ int main()
 	int x;
 	int y;
 
-	x = ft_printf("|%.5s|", NULL);
+	x = ft_printf("zee%");
 	printf("\n");
-	y = printf("|%.5s|", NULL);
+	y = printf("zee%");
 	printf("\n");
 
 	printf("%d\n", x);
